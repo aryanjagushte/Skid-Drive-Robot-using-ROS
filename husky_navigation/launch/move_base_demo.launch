@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- Run the map server -->
+<arg name="map_file" default="$(find drive_bot_description)/navigation/maps/map.yaml" />
+<node pkg="map_server" type="map_server" name="map_server_node" args="$(arg map_file)" />
+
+  <!--- Run AMCL -->
+  <include file="$(find husky_navigation)/launch/amcl.launch" />
+
+  <!--- Run Move Base -->
+  <include file="$(find husky_navigation)/launch/move_base.launch" />
+
+</launch>
+
